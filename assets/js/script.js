@@ -6,8 +6,6 @@ function generatePassword() {
   );
   var userPasswordLength = parseInt(userInput);
 
-  console.log(userPasswordLength);
-
   if (isNaN(userPasswordLength)) {
     window.alert("Please input numbers!");
     return;
@@ -16,22 +14,132 @@ function generatePassword() {
     window.alert("Please input a number between 8-128!");
     return;
   }
-}
+  var userChoiceLowerCase = window.confirm(
+    "Do you want lower case letters in your password?"
+  );
+  var userChoiceUpperCase = window.confirm(
+    "Do you want upper case letters in your password?"
+  );
+  var userChoiceNumeric = window.confirm(
+    "Do you want numbers in your password?"
+  );
+  var userChoiceSymbols = window.confirm(
+    "Do you want symbols in your password?"
+  );
 
-function randomLowerCase() {
-  return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
-}
+  var lowerCase = [
+    `a`,
+    `b`,
+    `c`,
+    `d`,
+    `e`,
+    `f`,
+    `g`,
+    `h`,
+    `i`,
+    `j`,
+    `k`,
+    `l`,
+    `m`,
+    `n`,
+    `o`,
+    `p`,
+    `q`,
+    `r`,
+    `s`,
+    `t`,
+    `u`,
+    `v`,
+    `w`,
+    `x`,
+    `y`,
+    `z`,
+  ];
+  var upperCase = [
+    `A`,
+    `B`,
+    `C`,
+    `D`,
+    `E`,
+    `F`,
+    `G`,
+    `H`,
+    `I`,
+    `J`,
+    `K`,
+    `L`,
+    `M`,
+    `N`,
+    `O`,
+    `P`,
+    `Q`,
+    `R`,
+    `S`,
+    `T`,
+    `U`,
+    `V`,
+    `W`,
+    `X`,
+    `Y`,
+    `Z`,
+  ];
+  var numbers = [`1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `0`];
+  var symbols = [
+    `!`,
+    `"`,
+    `#`,
+    `$`,
+    `%`,
+    `&`,
+    `'`,
+    `(`,
+    `)`,
+    `*`,
+    `+`,
+    `,`,
+    `-`,
+    `.`,
+    `/`,
+    `:`,
+    `;`,
+    `<`,
+    `=`,
+    `>`,
+    `?`,
+    `@`,
+    `[`,
+    `]`,
+    `^`,
+    `_`,
+    `{`,
+    `}`,
+    `|`,
+    `~`,
+  ];
 
-function randomUpperCase() {
-  return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
-}
-function randomNumeric() {
-  return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
-}
+  var userOptions = [];
+  var generatePassword = "";
 
-function randomSymbles() {
-  var symbles = [" !#$%&'()*+,-./:;<=>?@[]^_`{|}~"];
-  return symbles[Math.floor(Math.random() * symbles.length)];
+  if (userChoiceLowerCase === true) {
+    userOptions.push(lowerCase);
+  }
+  if (userChoiceUpperCase === true) {
+    userOptions.push(upperCase);
+  }
+  if (userChoiceNumeric === true) {
+    userOptions.push(numbers);
+  }
+  if (userChoiceSymbols === true) {
+    userOptions.push(symbols);
+  }
+
+  console.log(userOptions);
+  for (i = 0; i < userPasswordLength; i++) {
+    var randomPick = Math.floor(Math.random() * userOptions.length);
+    console.log(randomPick);
+    var generatePassword = userOptions[randomPick];
+    //console.log(generatePassword);
+  }
 }
 
 // Get references to the #generate element
