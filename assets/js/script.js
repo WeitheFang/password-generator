@@ -6,6 +6,8 @@ function generatePassword() {
   );
   var userPasswordLength = parseInt(userInput);
 
+  //console.log(userPasswordLength);
+
   if (isNaN(userPasswordLength)) {
     window.alert("Please input numbers!");
     return;
