@@ -117,29 +117,38 @@ function generatePassword() {
     `~`,
   ];
 
-  var userOptions = [];
-  var generatePassword = "";
+  var userOptions = "";
+  var selectedPassword = "";
 
   if (userChoiceLowerCase === true) {
-    userOptions.push(lowerCase);
+    userOptions += lowerCase.join("");
   }
   if (userChoiceUpperCase === true) {
-    userOptions.push(upperCase);
+    userOptions += upperCase.join("");
   }
   if (userChoiceNumeric === true) {
-    userOptions.push(numbers);
+    userOptions += numbers.join("");
   }
   if (userChoiceSymbols === true) {
-    userOptions.push(symbols);
+    userOptions += symbols.join("");
+  }
+  if (
+    userChoiceLowerCase === false &&
+    userChoiceUpperCase === false &&
+    userChoiceNumeric === false &&
+    userChoiceSymbols === false
+  ) {
+    return window.alert("Please at least choose one criteria!");
   }
 
   console.log(userOptions);
   for (i = 0; i < userPasswordLength; i++) {
     var randomPick = Math.floor(Math.random() * userOptions.length);
-    console.log(randomPick);
-    var generatePassword = userOptions[randomPick];
-    //console.log(generatePassword);
+    //console.log(randomPick);
+    selectedPassword += userOptions[randomPick];
   }
+  //console.log(selectedPassword);
+  return selectedPassword;
 }
 
 // Get references to the #generate element
